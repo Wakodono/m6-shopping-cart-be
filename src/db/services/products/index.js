@@ -4,8 +4,13 @@ const router = express.Router()
 
 router
     .route("/")
-    .get(() => {
-
+    .get(async (req, res, next) => {
+        try {
+            const products = await Product.findAll({ include: Product })
+            res.send(products)
+        } catch (error) {
+            next(error)
+        }
     })
     .post(() => {
 
@@ -20,7 +25,7 @@ router
 
     }) 
     .delete(() => {
-        
+
     }) 
 
 export default router;
