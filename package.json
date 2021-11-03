@@ -29,6 +29,7 @@
     "express": "^4.17.1",
     "express-list-endpoints": "^6.0.0",
     "pg": "^8.7.1",
+    "pg-hstore": "^2.3.4",
     "sequelize": "^6.9.0"
   }
 }
