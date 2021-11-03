@@ -13,7 +13,7 @@ const { DataTypes } = s
     "updatedAt": "DATE",   
 } */
 
-const User = sequelize.define('User', {
+const Product = sequelize.define('Product', {
     // Model attributes are defined here
     id: {
         type: DataTypes.INTEGER,
