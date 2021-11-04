@@ -1,6 +1,7 @@
 import express from "express"
+import cors from "cors"
 import listEndpoints from "express-list-endpoints"
-import { connectDB } from "./db/index.js"
+import { testConnection, connectDB } from "./db/index.js"
 import productsRouter from "./services/products/index.js"
 import {
     badRequestHandler,
@@ -12,6 +13,8 @@ import {
 //GLOBAL MIDDLEWARES
 
 const server = express()
+
+server.use(cors)
 
 server.use(express.json()) // If I do NOT specify this line BEFORE the endpoints, all the requests' bodies will be UNDEFINED
 
@@ -30,6 +33,8 @@ const port = process.env.PORT //always remember to check if dotenv package is in
 
 console.table(listEndpoints(server))
 
-server.listen(port, () => {
-    console.log("Server running on port:", port)
+server.listen(port, async () => {
+    console.log(`Server is listening on port ${port}`);
+  await testConnection();
+  await connectDB();
 })

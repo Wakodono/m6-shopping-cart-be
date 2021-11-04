@@ -1,6 +1,8 @@
 import sequelize from "../index.js"
 import s from "sequelize"
+import Product from "./products.js"
 const { DataTypes } = s
+
 
 /* {
     "id": 1,
@@ -26,6 +28,16 @@ const Review = sequelize.define('Review', {
         allowNull: false
     }, 
     productId: {
-        //ADD FOREIGN KEY HERE (Check docs for method)
+        type: DataTypes.INTEGER,
+
+        references: {
+            // This is a reference to another model
+            model: Product,
+      
+            // This is the column name of the referenced model
+            key: 'id',
+          }
     }
   })
+
+  export default Review
