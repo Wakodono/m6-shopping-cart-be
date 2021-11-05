@@ -2,12 +2,36 @@ import { Sequelize } from "sequelize";
 
 const { PGDATABASE, PGUSER, PGPASSWORD, PGHOST, PGPORT } = process.env;
 
-const sequelize = new Sequelize(PGDATABASE, PGUSER, PGPASSWORD, {
-  host: PGHOST,
-  port: PGPORT,
+const sequelize = new Sequelize(
+  process.env.PGDATABASE, 
+  process.env.PGUSER, 
+  process.env.PGPASSWORD, {
+  port: process.env.PGPORT,
+  host: process.env.PGHOST,
   dialect: "postgres",
+  dialectOptions: {
+    require: true,
+    rejectUnauthorized: false,
+  }
 });
 console.log("instance of sequelize created");
+
+/* const sequelize = new Sequelize(
+  process.env.DATABASE,
+  process.env.USER,
+  process.env.PASSWORD,
+  {
+    port: process.env.PORT,
+    host: process.env.HOST,
+    dialect: "postgres",
+    dialectOptions: {         // IMPORTANT
+      ssl: {
+        require: true,
+        rejectUnauthorized: false,
+      },
+    },
+  }
+); */
 
 
 //Not mandatory. Simply tests the connection
