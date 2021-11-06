@@ -3,16 +3,16 @@ import { Sequelize } from "sequelize";
 const { PGDATABASE, PGUSER, PGPASSWORD, PGHOST, PGPORT } = process.env;
 
 const sequelize = new Sequelize(
-  process.env.PGDATABASE, 
-  process.env.PGUSER, 
-  process.env.PGPASSWORD, {
-  port: process.env.PGPORT,
-  host: process.env.PGHOST,
+  PGDATABASE, 
+  PGUSER, 
+  PGPASSWORD, {
+  port: PGPORT,
+  host: PGHOST,
   dialect: "postgres",
-  dialectOptions: {
-    require: true,
-    rejectUnauthorized: false,
-  }
+  // dialectOptions: {
+  //   require: true,
+  //   rejectUnauthorized: false,
+  // }
 });
 console.log("instance of sequelize created");
 

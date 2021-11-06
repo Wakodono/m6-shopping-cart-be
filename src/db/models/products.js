@@ -40,10 +40,6 @@ const Product = sequelize.define(
       allowNull: false,
     },
   },
-  {
-    // Other model options go here
-    timestamps: true,
-  }
 );
 console.log("executes products.js");
 
